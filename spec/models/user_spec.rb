@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '寄付情報の保存' do
-    before do
-      @user = FactoryBot.build(:user)
-    end
+  before do
+    @user = FactoryBot.build(:user)
+  end
+  
+  describe 'てすと' do
+
 
     it 'すべての値が正しく入力されていれば保存できること' do
     end
