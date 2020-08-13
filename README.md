@@ -38,12 +38,12 @@ Things you may want to cover:
 | first_name_kana | string | null: false |
 | birthday | date | null: false |
 
-
 ### Association
 
 - has_many :items
-- has_many :trades
+- has_many :purchases
 - has_many :comments
+
 
 ## items テーブル
 
@@ -52,7 +52,7 @@ Things you may want to cover:
 | name   | string | null: false |
 | explanation | text | null: false |
 | price | string | null: false |
-| user_id | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
 | category_id | integer | null: false |
 | status_id | integer | null: false |
 | delivery_id | integer | null: false |
@@ -62,9 +62,9 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase
+- has_one :purchase
 - has_many :comments
-- belongs_to :address
+
 
 ## addresses テーブル
 
@@ -76,35 +76,36 @@ Things you may want to cover:
 | house_number | string | null: false |
 | building_name | string |             |
 | phone_number | string | null: false |
-| item_id | references | null: false, foreign_key: true |
-
-
+| item | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
+- belongs_to :purchase
+
+
 
 ## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
-
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
+- has_one :address
+
+
 
 ## comments テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | content | text | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
-
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
