@@ -4,11 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-VALID_email_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-VALID_password_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}\z/i
-VALID_name_REGEX = /\A[ぁ-んァ-ン一-龥]/
-VALID_name_kana_REGEX = /\A[ァ-ヶー－]+\z/
-
+  VALID_email_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.freeze
+  VALID_password_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}\z/i.freeze
+  VALID_name_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  VALID_name_kana_REGEX = /\A[ァ-ヶー－]+\z/.freeze
 
   with_options presence: true do
     validates :nickname
@@ -20,10 +19,6 @@ VALID_name_kana_REGEX = /\A[ァ-ヶー－]+\z/
     validates :first_name_kana, format: { with: VALID_name_kana_REGEX }
     validates :birthday
   end
-
 end
-
-
-
 
 # encrypted_passwordは暗号化されたパスワード、これにバリデーションをかけても意味がない
