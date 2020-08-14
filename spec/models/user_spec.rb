@@ -4,43 +4,51 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
-  
-  describe 'てすと' do
 
+  describe 'ユーザー管理機能' do
+    context 'ユーザー情報' do
+      it "ニックネームが必須であること" do
+        
+      end
+      it "メールアドレスが必須であること" do
+        
+      end
+      it "メールアドレスが一意性であること" do
+        
+      end
+      it "メールアドレスは@を含む必要があること" do
+        
+      end
+      it "パスワードが必須であること" do
+        
+      end
+      it "パスワードは6文字以上であること" do
+        
+      end
+      it "パスワードは半角英数字混合であること" do
+        
+      end
+      it "パスワードは確認用を含めて2回入力すること" do
+        
+      end
+    end
 
-    it 'すべての値が正しく入力されていれば保存できること' do
-    end
-    it 'nameが空だと保存できないこと' do
-    end
-    it 'nameが全角日本語でないと保存できないこと' do
-    end
-    it 'name_readingが空だと保存できないこと' do
-    end
-    it 'name_readingが全角日本語でないと保存できないこと' do
-    end
-    it 'nicknameが空だと保存できないこと' do
-    end
-    it 'nicknameが半角でないと保存できないこと' do
-    end
-    it 'postal_codeが空だと保存できないこと' do
-    end
-    it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-    end
-    it 'prefectureを選択していないと保存できないこと' do
-    end
-    it 'cityは空でも保存できること' do
-    end
-    it 'house_numberは空でも保存できること' do
-    end
-    it 'building_nameは空でも保存できること' do
-    end
-    it 'priceが空だと保存できないこと' do
-    end
-    it 'priceが全角数字だと保存できないこと' do
-    end
-    it 'priceが1円未満では保存できないこと' do
-    end
-    it 'priceが1,000,000円を超過すると保存できないこと' do
+    context '本人情報確認' do
+      it "ユーザー本名が、名字と名前がそれぞれ必須であること" do
+        
+      end
+      it "ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること" do
+        
+      end
+      it "ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること" do
+        
+      end
+      it "ユーザー本名のフリガナは全角（カタカナ）で入力させること" do
+        
+      end
+      it "生年月日が必須であること" do
+        
+      end
     end
   end
 end
