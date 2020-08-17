@@ -19,6 +19,11 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: VALID_name_kana_REGEX }
     validates :birthday
   end
+
+  has_many :items
+  has_many :purchases
+  has_many :comments
+
 end
 
 # encrypted_passwordは暗号化されたパスワード、これにバリデーションをかけても意味がない
