@@ -14,5 +14,3 @@ $(function(){
     }
   })
 });
-
-// setInterval(check, 1000);
