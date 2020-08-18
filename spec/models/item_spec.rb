@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    # let(:item){FactoryBot.build(:item) }
     @item = FactoryBot.build(:item)
     @item.image = fixture_file_upload('public/images/test_image.png')
   end
@@ -25,27 +24,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
       it 'カテゴリーの情報が必須であること' do
-        @item.category = nil
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category Select")
       end
       it '商品の状態についての情報が必須であること' do
-        @item.status = nil
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status Select")
       end
       it '配送料の負担についての情報が必須であること' do
-        @item.delivery = nil
+        @item.delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery Select")
       end
       it '発送元の地域についての情報が必須であること' do
-        @item.area = nil
+        @item.area_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Area Select")
       end
       it '発送までの日数についての情報が必須であること' do
-        @item.days = nil
+        @item.days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Days Select")
       end
