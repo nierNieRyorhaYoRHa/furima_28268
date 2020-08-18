@@ -11,7 +11,17 @@ class Item < ApplicationRecord
   # validates :title, :text, :genre, presence: true
 
   #ジャンルの選択が「--」の時は保存できないようにする
-  # validates :category_id, numericality: { other_than: 0 } 
+  with_options presence: true do
+    validates :image
+    validates :name, length: { maximum: 40 }
+    validates :explanation, length: { maximum: 1000 }
+    validates :category_id, numericality: { other_than: 1 ,message: 'Select'}
+    validates :status_id, numericality: { other_than: 1 ,message: 'Select'}
+    validates :delivery_id, numericality: { other_than: 1 ,message: 'Select'}
+    validates :area_id, numericality: { other_than: 0 ,message: 'Select'}
+    validates :days_id, numericality: { other_than: 1 ,message: 'Select'}
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  end
 
   belongs_to :user
   has_one :purchase
@@ -19,3 +29,5 @@ class Item < ApplicationRecord
   has_one_attached :image
 
 end
+
+

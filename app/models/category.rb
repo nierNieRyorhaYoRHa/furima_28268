@@ -1,4 +1,5 @@
 class Category < ActiveHash::Base
+  field :name, default: '---'
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: 'レディース' },
