@@ -23,7 +23,6 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
   has_many :comments
-
 end
 
 # encrypted_passwordは暗号化されたパスワード、これにバリデーションをかけても意味がない
