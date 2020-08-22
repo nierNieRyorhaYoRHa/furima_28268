@@ -35,7 +35,7 @@
     <%= form_with id: 'charge-form', class: 'transaction-form-wrap', url: item_purchases_path, local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%= render 'shared/error_messages', model: @address %>
+    <%= render 'shared/error_messages', model: @purchase %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# カード情報の入力 %>
