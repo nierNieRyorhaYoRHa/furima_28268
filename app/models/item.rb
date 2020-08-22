@@ -6,10 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :days
 
-  # 空の投稿を保存できないようにする
-  # validates :title, :text, :genre, presence: true
 
-  # ジャンルの選択が「--」の時は保存できないようにする
   with_options presence: true do
     validates :image
     validates :name, length: { maximum: 40 }
