@@ -7,7 +7,9 @@ class ItemPurchase
 
 
   VALID_postal_code_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
-  VALID_phone_number_REGEX = /\A\d{10,11}\z/.freeze
+  VALID_phone_number_REGEX = /\A\d{10}\z|\A\d{11}\z/.freeze
+  # VALID_phone_number_REGEX =  /\A(0{1}\d{9,10})\z/.freeze
+
 
   with_options presence: true do
     validates :token
@@ -26,21 +28,3 @@ class ItemPurchase
 
 end
 
-
-# def new
-#   @donation = User.new
-# end
-
-# def create
-#   @donation = User.create(donation_params)
-# end
-
-# private
-
-# def donation_params
-#   params.require(:user).permit(:name, :name_reading, :nickname)
-# end
-
-# # purchase = Purchase.new(item_id: item_id, user_id: user_id)
-# # purchase.save
-# Address.create(purchase_id: purchase.id, postal_code: postal_code, area_id: area_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number )
