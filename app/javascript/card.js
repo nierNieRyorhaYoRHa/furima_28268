@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("pk_test_XXXXXXXX");　// PAY.JPテスト公開鍵
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -14,6 +14,7 @@ const pay = () => {
       exp_year: `20${formData.get("exp_year")}`,
     };
 
+
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
         const token = response.id;
@@ -21,14 +22,17 @@ const pay = () => {
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
 
-        document.getElementById("number").removeAttribute("name");
-        document.getElementById("cvc").removeAttribute("name");
-        document.getElementById("exp_month").removeAttribute("name");
-        document.getElementById("exp_year").removeAttribute("name");
+        document.getElementById("card-number").removeAttribute("name");
+        document.getElementById("card-cvc").removeAttribute("name");
+        document.getElementById("card-exp-month").removeAttribute("name");
+        document.getElementById("card-exp-year").removeAttribute("name");
 
         document.getElementById("charge-form").submit();
         document.getElementById("charge-form").reset();
       } else {
+        alert("カード情報を正しく入力してください！");
+        document.getElementById("charge-form").submit();
+        // document.getElementById("f.submit").removeAttribute("disabled");
       }
     });
   });
