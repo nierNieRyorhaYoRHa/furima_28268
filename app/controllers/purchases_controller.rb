@@ -18,7 +18,6 @@ class PurchasesController < ApplicationController
     else
       render :index and return
     end
-    
   end
 
   private
@@ -30,22 +29,20 @@ class PurchasesController < ApplicationController
   def move_to_root
     @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id
-    redirect_to root_path if @item.purchase != nil 
+    redirect_to root_path unless @item.purchase.nil?
   end
 
   def purchase_params
-    #「住所」「寄付金」のキーも追加
+    # 「住所」「寄付金」のキーも追加
     params.permit(:token, :item_id, :postal_code, :area_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
-      card: purchase_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
+      amount: @item.price, # 商品の値段
+      card: purchase_params[:token], # カードトークン
+      currency: 'jpy'                 # 通貨の種類(日本円)
     )
   end
-
 end
-

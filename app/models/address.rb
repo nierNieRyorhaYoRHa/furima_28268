@@ -1,5 +1,4 @@
 class Address < ApplicationRecord
-
   VALID_postal_code_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
   VALID_phone_number_REGEX = /\A\d{10,11}\z/.freeze
 

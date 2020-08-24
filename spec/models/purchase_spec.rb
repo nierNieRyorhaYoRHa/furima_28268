@@ -26,12 +26,12 @@ RSpec.describe ItemPurchase, type: :model do
       it '郵便番号にはハイフンが必要であること（123-4567となる）' do
         @purchase.postal_code = '1234567'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@purchase.errors.full_messages).to include('Postal code is invalid')
       end
       it '配送先の情報として、都道府県が必須であること' do
         @purchase.area_id = 0
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Area Select")
+        expect(@purchase.errors.full_messages).to include('Area Select')
       end
       it '配送先の情報として、市区町村が必須であること' do
         @purchase.city = nil
@@ -55,15 +55,13 @@ RSpec.describe ItemPurchase, type: :model do
       it '電話番号にはハイフンは不要であること' do
         @purchase.phone_number = '012-3456-7890'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase.errors.full_messages).to include('Phone number is invalid')
       end
       it '電話番号は11桁以内であること' do
         @purchase.phone_number = '0123456789012'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase.errors.full_messages).to include('Phone number is invalid')
       end
     end
   end
 end
-
-

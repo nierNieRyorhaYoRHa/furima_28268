@@ -6,7 +6,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :days
 
-
   with_options presence: true do
     validates :image
     validates :name, length: { maximum: 40 }
