@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :days
 
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name, length: { maximum: 40 }
     validates :explanation, length: { maximum: 1000 }
     validates :category_id, numericality: { other_than: 1, message: 'Select' }
@@ -21,5 +21,5 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :purchase
   has_many :comments
-  has_one_attached :image
+  has_many_attached :images
 end
