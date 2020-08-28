@@ -5,12 +5,11 @@ class ItemPurchase
 
   VALID_postal_code_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
   VALID_phone_number_REGEX = /\A\d{10}\z|\A\d{11}\z/.freeze
-  # VALID_phone_number_REGEX =  /\A(0{1}\d{9,10})\z/.freeze
 
   with_options presence: true do
     validates :token
     validates :postal_code, format: { with: VALID_postal_code_REGEX }
-    validates :area_id, numericality: { other_than: 0, message: 'Select' }
+    validates :area_id, numericality: { other_than: 0, message: 'を選択してください' }
     validates :city
     validates :house_number
     validates :phone_number, format: { with: VALID_phone_number_REGEX }
