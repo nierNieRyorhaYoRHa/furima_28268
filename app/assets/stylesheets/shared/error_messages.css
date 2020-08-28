@@ -9,3 +9,8 @@
   list-style: circle;
   color: rgb(182, 48, 0);
 }
+
+.field_with_errors {
+  display: flex;
+  flex-wrap: wrap;
+}
