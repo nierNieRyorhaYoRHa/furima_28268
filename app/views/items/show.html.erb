@@ -99,19 +99,20 @@
         <%= image_tag "comment.png" , class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
       <% end %>
-  <% end %>
+    <% end %>
 
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <p>
-            <%= comment.text %>
-          </p>
+    <div class="container">
+      <h3>＜コメント一覧＞</h3>
+      <div id="comments" class="comments">
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <p>
+              <%= comment.text %>
+            </p>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-
   </div>
 
   <div class="links">

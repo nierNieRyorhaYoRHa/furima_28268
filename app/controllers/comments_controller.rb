@@ -3,7 +3,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(text: params[:comment][:text], user_id: current_user.id, item_id: params[:item_id])
-    binding.pry
+    if @comment.save
+      ActionCable.server.broadcast 'comment_channel', content: @comment
+    end
   end
 
   private
