@@ -9,7 +9,11 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    redirect_to new_user_card_path(current_user) and return unless current_user.card.present?
     @item = Item.find(params[:item_id])
+
+
+
     @purchase = ItemPurchase.new(purchase_params)
     if @purchase.valid?
       @purchase.save
@@ -34,18 +38,17 @@ class PurchasesController < ApplicationController
 
   def purchase_params
     # 「住所」「寄付金」のキーも追加
-    params.permit(:card_token, :item_id, :postal_code, :area_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
+    params.permit(:card_token, :authenticity_token, :item_id, :postal_code, :area_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
   end
 
   def pay_item
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
+    customer_token = current_user.card.customer_token # ログインしているユーザーの顧客トークンを定義
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
-      card: purchase_params[:card_token], # カードトークン
-      currency: 'jpy'                 # 通貨の種類(日本円)
-    )
+      customer: customer_token, # 顧客のトークン
+      currency: 'jpy' # 通貨の種類（日本円）
+      )
   end
 end
 
-
-# tokenをcard_tokenに変える
