@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item_purchase do
-    token         { 'zelda' }
+    card_token         { 'zelda' }
     postal_code   { '123-4567' }
     area_id       { '48' }
     city          { '中央ハイラル' }

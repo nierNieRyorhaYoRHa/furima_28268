@@ -22,7 +22,7 @@ ja:
   activemodel:
     attributes:
       item_purchase:
-        token: カード情報
+        card_token: カード情報
         city: 市区町村
         area_id: 都道府県
         postal_code: 郵便番号
