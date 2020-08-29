@@ -11,7 +11,7 @@ RSpec.describe ItemPurchase, type: :model do
         expect(@purchase).to be_valid
       end
       it 'クレジットカード情報入力が必須であること' do
-        @purchase.token = nil
+        @purchase.card_token = nil
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("カード情報を入力してください")
       end
