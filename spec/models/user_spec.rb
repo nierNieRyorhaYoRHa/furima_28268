@@ -10,12 +10,12 @@ RSpec.describe User, type: :model do
       it 'ニックネームが必須であること' do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("ニックネームを入力してください")
+        expect(@user.errors.full_messages).to include('ニックネームを入力してください')
       end
       it 'メールアドレスが必須であること' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Eメールを入力してください")
+        expect(@user.errors.full_messages).to include('Eメールを入力してください')
       end
       it 'メールアドレスが一意性であること' do
         @user.save
@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
         @user.password = ''
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワードを入力してください")
+        expect(@user.errors.full_messages).to include('パスワードを入力してください')
       end
       it 'パスワードは6文字以上であること' do
         @user.password = '12345'
@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
       it 'パスワードは確認用を含めて2回入力すること' do
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
+        expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードの入力が一致しません')
       end
     end
 
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
         @user.last_name = ''
         @user.first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("お名前(全角)名字を入力してください", 'お名前(全角)名前を入力してください')
+        expect(@user.errors.full_messages).to include('お名前(全角)名字を入力してください', 'お名前(全角)名前を入力してください')
       end
       it 'ユーザー本名は全角（漢字・ひらがな・カタカナ）で入力させること' do
         @user.last_name = 'a'
@@ -71,7 +71,7 @@ RSpec.describe User, type: :model do
         @user.last_name_kana = ''
         @user.first_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include('お名前(カナ)名字を入力してください', "お名前(カナ)名前を入力してください")
+        expect(@user.errors.full_messages).to include('お名前(カナ)名字を入力してください', 'お名前(カナ)名前を入力してください')
       end
       it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること' do
         @user.last_name_kana = 'a'
@@ -82,7 +82,7 @@ RSpec.describe User, type: :model do
       it '生年月日が必須であること' do
         @user.birthday = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("生年月日を入力してください")
+        expect(@user.errors.full_messages).to include('生年月日を入力してください')
       end
     end
   end

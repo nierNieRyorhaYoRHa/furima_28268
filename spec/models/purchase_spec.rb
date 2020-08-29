@@ -13,7 +13,7 @@ RSpec.describe ItemPurchase, type: :model do
       it 'クレジットカード情報入力が必須であること' do
         @purchase.card_token = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("カード情報を入力してください")
+        expect(@purchase.errors.full_messages).to include('カード情報を入力してください')
       end
     end
 
@@ -21,7 +21,7 @@ RSpec.describe ItemPurchase, type: :model do
       it '配送先の情報として、郵便番号が必須であること' do
         @purchase.postal_code = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("郵便番号を入力してください")
+        expect(@purchase.errors.full_messages).to include('郵便番号を入力してください')
       end
       it '郵便番号にはハイフンが必要であること（123-4567となる）' do
         @purchase.postal_code = '1234567'
@@ -36,12 +36,12 @@ RSpec.describe ItemPurchase, type: :model do
       it '配送先の情報として、市区町村が必須であること' do
         @purchase.city = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("市区町村を入力してください")
+        expect(@purchase.errors.full_messages).to include('市区町村を入力してください')
       end
       it '配送先の情報として、番地が必須であること' do
         @purchase.house_number = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("番地を入力してください")
+        expect(@purchase.errors.full_messages).to include('番地を入力してください')
       end
       it '配送先の情報として、建物名は必須ではないこと' do
         @purchase.building_name = nil
@@ -50,7 +50,7 @@ RSpec.describe ItemPurchase, type: :model do
       it '配送先の情報として、電話番号が必須であること' do
         @purchase.phone_number = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("電話番号を入力してください")
+        expect(@purchase.errors.full_messages).to include('電話番号を入力してください')
       end
       it '電話番号にはハイフンは不要であること' do
         @purchase.phone_number = '012-3456-7890'

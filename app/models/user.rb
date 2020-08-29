@@ -24,8 +24,6 @@ class User < ApplicationRecord
   has_many :purchases
   has_many :comments
   has_one :card, dependent: :destroy
-
-
 end
 
 # encrypted_passwordは暗号化されたパスワード、これにバリデーションをかけても意味がない

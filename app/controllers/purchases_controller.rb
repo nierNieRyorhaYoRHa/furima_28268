@@ -10,9 +10,8 @@ class PurchasesController < ApplicationController
 
   def create
     redirect_to new_user_card_path(current_user) and return unless current_user.card.present?
+
     @item = Item.find(params[:item_id])
-
-
 
     @purchase = ItemPurchase.new(purchase_params)
     if @purchase.valid?
@@ -42,13 +41,12 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 環境変数を読み込む
     customer_token = current_user.card.customer_token # ログインしているユーザーの顧客トークンを定義
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       customer: customer_token, # 顧客のトークン
       currency: 'jpy' # 通貨の種類（日本円）
-      )
+    )
   end
 end
-
