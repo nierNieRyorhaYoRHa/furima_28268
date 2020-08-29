@@ -88,32 +88,19 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <%= form_with url: item_comments_path(@item.id), model: @comment, local: true do |f| %>
-      <%= f.text_area :text, class:"comment-text", placeholder:"コメントをご記入ください！" ,rows:"7" ,maxlength:"1000" %>
+    <form>
+      <textarea class="comment-text"></textarea>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <%= f.button type = "submit" , class:"comment-btn" do %>
-        <%= image_tag "comment.png" , class:"comment-flag-icon" ,width:"20",height:"25"%>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
-      <% end %>
-  <% end %>
-
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <p>
-            <%= comment.text %>
-          </p>
-        <% end %>
-      <% end %>
-    </div>
-
+      </button>
+    </form>
   </div>
-
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
@@ -124,7 +111,5 @@
   </div>
   <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
 </div>
-
-
 
 <%= render "shared/footer" %>
