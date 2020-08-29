@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user).order("created_at DESC")
+  end
+
   def destroy
     item = Item.find(params[:id])
     item.destroy

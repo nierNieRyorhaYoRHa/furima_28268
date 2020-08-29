@@ -204,3 +204,35 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.comments {
+  padding: 5px;
+  margin-top: 15px;
+}
+
+/* .comments a {
+  color: #57C3E9;
+} */
+
+.comments p {
+  color: black;
+  padding: 30px;
+}
+
+.comments a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  margin: 20px 0;
+  padding: 30px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.container h3 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666; */
