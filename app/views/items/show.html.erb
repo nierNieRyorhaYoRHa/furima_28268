@@ -119,6 +119,7 @@
           <% if @comments %>
             <% @comments.each do |comment| %>
               <p>
+                <strong><%= comment.user.nickname %>：</strong>
                 <%= comment.text %>
               </p>
             <% end %>
