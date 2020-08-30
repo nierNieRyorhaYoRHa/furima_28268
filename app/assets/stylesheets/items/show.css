@@ -138,7 +138,7 @@
 }
 
 
-/* /商品の概要 */
+/* 商品の概要 */
 
 .comment-box {
   width: 40vw;
@@ -233,3 +233,4 @@
   font-weight: normal;
   font-size: 20px;
   color: #666;
+}
