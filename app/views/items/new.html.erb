@@ -21,11 +21,13 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, name: 'item_tag[images][]', id:"item-image" %>
+        <%= f.file_field :images, name: 'item_tag[images][]', id:"item-image" , value:@item.images %>
       </div>
       <div id="image-list"></div>
+      <%# if @item.images != nil %>
       <%# @item.images.each do |image| %>
-        <%#= image_tag image, class: 'images', width:600 %>
+        <%#= image_tag image, class: 'images', width:600 if image.attached? %>
+      <%# end %>
       <%# end %>
     </div>
 
