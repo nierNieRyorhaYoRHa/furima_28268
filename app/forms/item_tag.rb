@@ -15,7 +15,9 @@ class ItemTag
   end
 
   def save
-    item = Item.create(
+    return false if invalid?
+
+    item = Item.new(
       name: name, 
       explanation: explanation, 
       category_id: category_id, 
@@ -26,9 +28,11 @@ class ItemTag
       price: price, 
       user_id: user_id, 
       images: images)
-    tag = Tag.where(brand: brand).first_or_initialize
-    tag.save
-    ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
+      
+      tag = Tag.where(brand: brand).first_or_initialize
+      tag.save
+      ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
+      
   end
 
 end
