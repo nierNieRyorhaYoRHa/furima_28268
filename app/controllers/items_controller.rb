@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @item.comments.includes(:user).order("created_at DESC")
+    @comments = @item.comments.includes(:user).order('created_at DESC')
   end
 
   def destroy
@@ -40,9 +40,10 @@ class ItemsController < ApplicationController
   end
 
   def search
-    return nil if params[:input] == ""
-    tag = Tag.where(['brand LIKE ?', "%#{params[:input]}%"] )
-    render json:{ keyword: tag }
+    return nil if params[:input] == ''
+
+    tag = Tag.where(['brand LIKE ?', "%#{params[:input]}%"])
+    render json: { keyword: tag }
   end
 
   private

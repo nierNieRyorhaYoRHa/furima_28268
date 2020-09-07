@@ -18,21 +18,20 @@ class ItemTag
     return false if invalid?
 
     item = Item.new(
-      name: name, 
-      explanation: explanation, 
-      category_id: category_id, 
-      status_id: status_id, 
-      delivery_id: delivery_id, 
-      area_id: area_id, 
-      days_id: days_id, 
-      price: price, 
-      user_id: user_id, 
-      images: images)
-      
-      tag = Tag.where(brand: brand).first_or_initialize
-      tag.save
-      ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
-      
-  end
+      name: name,
+      explanation: explanation,
+      category_id: category_id,
+      status_id: status_id,
+      delivery_id: delivery_id,
+      area_id: area_id,
+      days_id: days_id,
+      price: price,
+      user_id: user_id,
+      images: images
+    )
 
+    tag = Tag.where(brand: brand).first_or_initialize
+    tag.save
+    ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
+  end
 end
