@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item , local: true do |f| %>
+    <%= form_with model: @item , url: items_path, local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%= render 'shared/error_messages', model: f.object %>
@@ -21,12 +21,14 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, name: 'item[images][]', id:"item-image" %>
+        <%= f.file_field :images, name: 'item_tag[images][]', id:"item-image" , value:@item.images %>
       </div>
       <div id="image-list"></div>
-      <% @item.images.each do |image| %>
-        <%= image_tag image, class: 'images', width:600 %>
-      <% end %>
+      <%# if @item.images != nil %>
+      <%# @item.images.each do |image| %>
+        <%#= image_tag image, class: 'images', width:600 if image.attached? %>
+      <%# end %>
+      <%# end %>
     </div>
 
     <%# /出品画像 %>
@@ -43,6 +45,14 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          ブランドタグ
+        </div>
+        <%= f.text_field :brand, class:"items-text", id:"tag-field", placeholder:"ブランドタグをつけることが出来ます。" %>
+      </div>
+      <div id="search-result">
       </div>
     </div>
     <%# /商品名と商品説明 %>
