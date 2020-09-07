@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
-  before_action :move_to_sign_in, except: [:index, :show, :item_search]
-  before_action :searches_tag, only: [:index, :item_search, :brand, :category]
-  before_action :searches_item, only: [:index, :item_search, :brand, :category]
+  before_action :move_to_sign_in, except: [:index, :show, :item_search, :tag_search]
+  before_action :searches_tag, only: [:index, :item_search, :brand, :category, :tag_search]
+  before_action :searches_item, only: [:index, :item_search, :brand, :category, :tag_search]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -49,8 +49,8 @@ class ItemsController < ApplicationController
   end
 
   def brand
-    @tags = Tag.order('created_at DESC')
     @items = Item.includes(:user).order('created_at DESC')
+    @tags = Tag.all.order('created_at DESC')
     set_item_column
   end
 
@@ -65,7 +65,8 @@ class ItemsController < ApplicationController
   end
 
   def tag_search
-    @results = @p.result.includes(:item)  # 検索条件にマッチした商品の情報を取得
+    tag = Tag.find(@p.brand_eq)
+    @results = tag.items.includes(:user)  # 検索条件にマッチした商品の情報を取得
   end
 
   private
