@@ -28,3 +28,14 @@ ja:
         postal_code: 郵便番号
         house_number: 番地
         phone_number: 電話番号
+      item_tag:
+        text: テキスト
+        images: 画像
+        name: 商品名
+        explanation: 商品説明
+        category_id: カテゴリー
+        status_id: 商品の状態
+        delivery_id: 配送料の負担
+        area_id: 配送元の地域
+        days_id: 発送までの日数
+        price: 価格
