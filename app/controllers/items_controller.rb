@@ -65,9 +65,9 @@ class ItemsController < ApplicationController
   end
 
   def tag_search
-    if @p.brand_eq != nil
+    if !@p.brand_eq.nil?
       tag = Tag.find(@p.brand_eq)
-      @results = tag.items.includes(:user).order('created_at DESC')  # 検索条件にマッチした商品の情報を取得
+      @results = tag.items.includes(:user).order('created_at DESC') # 検索条件にマッチした商品の情報を取得
     else
       @items = Item.includes(:user).order('created_at DESC')
       @tags = Tag.all.order('created_at DESC')
@@ -91,7 +91,7 @@ class ItemsController < ApplicationController
   end
 
   def searches_tag
-    @p = Tag.ransack(params[:q])  # 検索オブジェクトを生成
+    @p = Tag.ransack(params[:q]) # 検索オブジェクトを生成
   end
 
   def searches_item
@@ -99,7 +99,6 @@ class ItemsController < ApplicationController
   end
 
   def set_item_column
-    @item_category = Item.select("category_id").distinct  # 重複なくnameカラムのデータを取り出す
+    @item_category = Item.select('category_id').distinct  # 重複なくnameカラムのデータを取り出す
   end
-
 end
