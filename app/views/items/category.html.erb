@@ -18,7 +18,7 @@
   </h1>
   <%= search_form_for @p2, url: item_search_items_path do |f| %>
     <%= f.label :category_id_eq, 'カテゴリー' %>
-    <%= f.collection_select :category_id_eq, @item_category, :category_id, :category_id,  include_blank: '指定なし' %>
+    <%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし' %>
     <br>
 
     <br>

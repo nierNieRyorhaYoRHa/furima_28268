@@ -18,7 +18,7 @@
   </h1>
   <%= search_form_for @p, url: tag_search_items_path do |f| %>
     <%= f.label :brand_eq, 'ブランド' %>
-    <%= f.collection_select :brand_eq, @tags, :id, :brand,  include_blank: '指定なし' %>
+    <%= f.collection_select :brand_eq, @tags, :id, :brand, include_blank: '指定なし' %>
     <br>
 
     <br>

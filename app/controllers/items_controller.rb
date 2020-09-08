@@ -61,12 +61,19 @@ class ItemsController < ApplicationController
   end
 
   def item_search
-    @results = @p2.result.includes(:user)  # 検索条件にマッチした商品の情報を取得
+    @results = @p2.result.includes(:user).order('created_at DESC')  # 検索条件にマッチした商品の情報を取得
   end
 
   def tag_search
-    tag = Tag.find(@p.brand_eq)
-    @results = tag.items.includes(:user)  # 検索条件にマッチした商品の情報を取得
+    if @p.brand_eq != nil
+      tag = Tag.find(@p.brand_eq)
+      @results = tag.items.includes(:user).order('created_at DESC')  # 検索条件にマッチした商品の情報を取得
+    else
+      @items = Item.includes(:user).order('created_at DESC')
+      @tags = Tag.all.order('created_at DESC')
+      set_item_column
+      render :brand
+    end
   end
 
   private
