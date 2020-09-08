@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
-  before_action :move_to_sign_in, except: [:index, :show, :item_search, :tag_search]
+  before_action :move_to_sign_in, except: [:index, :show, :item_search, :tag_search, :brand, :category]
   before_action :searches_tag, only: [:index, :item_search, :brand, :category, :tag_search]
   before_action :searches_item, only: [:index, :item_search, :brand, :category, :tag_search]
 
