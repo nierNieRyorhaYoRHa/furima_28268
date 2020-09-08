@@ -36,11 +36,19 @@
     <%= f.radio_button :price_lteq, '' %>
     指定なし
     <%= f.radio_button :price_lteq, '1000' %>
-    1000円以下
+    1,000円以下
     <%= f.radio_button :price_lteq, '2500' %>
-    2500円以下
+    2,500円以下
     <%= f.radio_button :price_lteq, '5000' %>
-    5000円以下
+    5,000円以下
+    <%= f.radio_button :price_lteq, '10000' %>
+    10,000円以下
+    <%= f.radio_button :price_lteq, '20000' %>
+    20,000円以下
+    <%= f.radio_button :price_lteq, '50000' %>
+    50,000円以下
+    <%= f.radio_button :price_lteq, '100000' %>
+    100,000円以下
     <br>
     <br>
     <%= f.submit '検索' %>
