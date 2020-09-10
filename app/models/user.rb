@@ -32,7 +32,7 @@ class User < ApplicationRecord
     # 無ければemailでユーザー検索して取得orビルド(保存はしない)
     user = User.where(email: auth.info.email).first_or_initialize(
       nickname: auth.info.name,
-        email: auth.info.email
+      email: auth.info.email
     )
     if user.persisted?
       sns.user = user
@@ -40,7 +40,6 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
-
 end
 
 # encrypted_passwordは暗号化されたパスワード、これにバリデーションをかけても意味がない
