@@ -30,6 +30,8 @@ class ItemTag
       images: images
     )
 
+    item.save
+
     tag = Tag.where(brand: brand).first_or_initialize
     tag.save
     ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
